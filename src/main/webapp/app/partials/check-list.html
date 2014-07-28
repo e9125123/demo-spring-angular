@@ -1,0 +1,28 @@
+<p id="tester">All checks</p>
+<button ng-click="tableParams.sorting({})"
+        class="btn btn-default pull-right">Clear sorting
+</button>
+<button ng-click="tableParams.filter({})"
+        class="btn btn-default pull-right">Clear filter
+</button>
+<a href="#/checks/create">create</a>
+{{loaded.length}}
+<br/>
+{{checkboxes.items}}
+<br/>
+<table ng-table="tableParams" show-filter="true" class="table">
+    <tr ng-repeat="check in $data">
+        <td width="30" style="text-align: left"
+            header="'checkbox.html'"><input type="checkbox"
+                                                             ng-model="checkboxes.items[check.id]"/></td>
+        <td data-title="'checkNumber'" filter="{ 'checkNumber': 'text' }"
+            sortable="'checkNumber'"><a
+                href="#/checks/{{check.checkNumber}}">{{check.checkNumber}}</a></td>
+        <td data-title="'checkName'" filter="{ 'checkName': 'text' }"
+            sortable="'checkName'">{{check.checkName}}
+        </td>
+    </tr>
+</table>
+<script type="text/ng-template" id="checkbox.html">
+    <input type="checkbox" ng-model="checkboxes.checked" id="select_all" name="filter-checkbox" value=""/>
+</script>

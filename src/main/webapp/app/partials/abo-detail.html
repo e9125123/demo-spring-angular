@@ -1,0 +1,28 @@
+TBD: detail view for {{abo.name}}
+<br/>
+
+<style type="text/css">
+    .css-form input.ng-invalid.ng-dirty {
+    background-color: #FA787E;
+    }
+
+    .css-form input.ng-valid.ng-dirty {
+    background-color: #78FA89;
+    }
+</style>
+
+<div>
+    <form name="form" novalidate class="css-form">
+        <div>
+            Name: <input type="text" ng-model="abo.name"/><br/> id: <input
+                type="text" ng-model="abo.id"/><br/>
+        </div>
+
+        <button ng-click="reset()" ng-disabled="isUnchanged(abo)">RESET</button>
+        <button ng-click="update(abo)"
+                ng-disabled="form.$invalid || isUnchanged(abo)">SAVE
+        </button>
+    </form>
+    <pre>form = {{abo | json}}</pre>
+    <pre>master = {{master | json}}</pre>
+</div>

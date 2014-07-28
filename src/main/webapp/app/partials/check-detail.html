@@ -1,0 +1,53 @@
+<p id="tester">TBD: detail view for {{check.checkNumber}}</p>
+<br/>
+
+<br/>
+
+<div>
+    <div
+            data-angular-treeview="true"
+            data-tree-id="abc"
+            data-tree-model="treedata"
+            data-node-id="id"
+            data-node-label="label"
+            data-node-children="children" >
+    </div>
+
+    <hr />
+		<pre>
+nodes   : {{treedata | json}}
+		</pre>
+</div>
+
+<style type="text/css">
+    .css-form input.ng-invalid.ng-dirty {
+    background-color: #FA787E;
+    }
+
+    .css-form input.ng-valid.ng-dirty {
+    background-color: #78FA89;
+    }
+</style>
+
+<div>
+    <form name="form" novalidate class="css-form">
+        <div>
+            Check-Number (integer 1 - 100): <input type="number" ng-model="check.checkNumber"
+                                                   name="checkNumber" min="1" max="100" required/><br/>
+			<span ng-show="form.checkNumber.$error.min || form.checkNumber.$error.max">
+				The value must be in range 0 to 100!</span>
+        </div>
+        <div>
+            Name: <input type="text" ng-model="check.checkName"/><br/> id: <input
+                type="text" ng-model="check.id"/><br/>
+        </div>
+
+        <button ng-click="reset()" ng-disabled="isUnchanged(check)">RESET</button>
+        <button ng-click="update(check)"
+                ng-disabled="form.$invalid || isUnchanged(check)">SAVE
+        </button>
+    </form>
+
+    <pre>form = {{check | json}}</pre>
+    <pre>master = {{master | json}}</pre>
+</div>
